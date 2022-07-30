@@ -32,12 +32,18 @@
  * bjoern@cs.stanford.edu 12/30/2008
  */
 
-#ifndef _WIFIUDP_H_
-#define _WIFIUDP_H_
+#pragma once
 
 #include <Arduino.h>
 #include <Udp.h>
 #include <cbuf.h>
+
+class IWiFiUDP : public UDP {
+  public:
+	uint8_t beginMulticast(IPAddress ip, uint16_t port);
+	int beginMulticastPacket();
+	int beginPacket();
+};
 
 class WiFiUDP : public UDP {
 private:
@@ -73,5 +79,3 @@ public:
   IPAddress remoteIP();
   uint16_t remotePort();
 };
-
-#endif /* _WIFIUDP_H_ */
